@@ -1,0 +1,6 @@
+include LICENSE
+include README.md
+recursive-include dh_webconfig/static *
+recursive-include dh_webconfig/templates *
+global-exclude __pycache__
+global-exclude *.py[co]
