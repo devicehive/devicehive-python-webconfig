@@ -14,35 +14,135 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-.input-block {
-    margin-bottom: 10px;
+body {
+	padding: 0;
+	margin: 0;
+	font-family: Helvetica, sans-serif;
+	font-size: 100%;
 }
 
-.input-text {
-    display: block;
-    width: 100%;
+.header {
+	background: #fff;
+	border-bottom: 3px solid #467487;
+	height: 60px;
+	padding: 10px;
+	max-width: 1024px;
+	width: 100%;
+	margin: 0 auto;
 }
 
-.connected {
-    color: green;
+.header .devecihive-logo-text {
+	background: url('/static/dh_config/logo.png') no-repeat;
+	height: 100%;
+	background-size: contain;
+	display: inline-block;
+	width: 210px;
+	vertical-align: middle;
 }
 
-.connecting {
-    color: orange;
+.input-data {
+	background: rgba(70, 116, 135, .15);
+	border: none;
+	border-radius: 6px;
+	height: 20px;
+	text-indent: 5px;
+    width: 280px;
 }
 
-.disconnected {
-    color: red;
+.content {
+	padding: 20px;
+	max-width: 1024px;
+	margin: 0 auto;
+	width: 100%;
 }
 
-.hidden {
-    display: none;
+.content .form-block {
+	margin-bottom: 20px;
+}
+
+.form-block label {
+	display: block;
+	font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-block .btn_event.btn_convert {
+	width: 180px;
+	height: 60px;
+	margin: 10px 0 0 0;
+}
+
+.form-block .btn_event.btn_convert:hover {
+	background: #196437;
+	color: #fff;
+}
+
+.btn_event {
+	cursor: pointer;
+	outline: none;
+	min-width: 100px;
+	width: auto;
+	height: 30px;
+	padding: 0 20px;
+	border-radius: 10px;
+	border: none;
+	font-size: 16px;
+}
+
+.btn_event:hover {
+	background: #467487;
+	color: #fff;
+}
+
+.btn_event.btn_event_green,
+.btn_event.btn_event_red {
+	color: #ffffff;
+}
+
+.btn_event.btn_event_green {
+	background: #4C9A6C;
+}
+
+.btn_event.btn_event_green:hover {
+	background: #196437;
+}
+
+.btn_event.btn_event_red:hover {
+	background: #86212D;
+}
+
+.btn_event.btn_event_red {
+	background: #CD6672;
+}
+
+.group-box {
+    margin-bottom: 15px;
+}
+
+.group-box button {
+	margin-right: 20px;
+}
+
+.status-holder .connected {
+    color: #196437;
+}
+
+.status-holder .connecting {
+    color: #FFA500;
+}
+
+.status-holder .disconnected {
+    color: #86212D;
 }
 
 .status-holder {
     margin-bottom: 20px;
 }
 
-.status-row {
+.status-holder .status-row {
     margin-bottom: 5px;
+}
+
+.hidden {
+    visibility: hidden;
 }

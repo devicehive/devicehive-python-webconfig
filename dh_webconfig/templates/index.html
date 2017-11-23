@@ -23,28 +23,40 @@ limitations under the License.
   <link rel="stylesheet" href="/static/dh_config/main.css">
 </head>
 <body>
+
+<div class="header">
+  <div class="devecihive-logo-text"></div>
+</div>
+
+<div class="content">
   <div class="status-holder">
-    <div id="id_status_holder" class="status-row"><span>Status: </span><span id="id_status">unknown</span></div>
-    <div id="id_error_holder" class="status-row hidden"><span>Error: </span><span id="id_error" class="error"></span></div>
+    <div id="id_status_holder" class="status-row"><span>Connection status: </span><span id="id_status" class="${status}">${status}</span></div>
+    <div id="id_error_holder" class="status-row hidden"><span>Error: </span><span id="id_error" class="disconnected"></span></div>
   </div>
-  <form method="POST">
-    <div class="input-block">
-      <label for="id_url">DeviceHive URL:</label>
-      <input class="input-text" id="id_url" type="text" name="url" value="${url}">
-    </div>
+  <div class="form-block">
+    <form method="POST">
+      <div class="group-box">
+        <label class="pin-label" for="id_url">URL:</label>
+        <input class="input-data" id="id_url" type="text" name="url" value="${url}">
+      </div>
 
-    <div class="input-block">
-      <label for="id_token">DeviceHive RefreshToken:</label>
-      <input class="input-text" id="id_token" type="password" name="token" value="${token}">
-    </div>
+      <div class="group-box">
+        <label class="pin-label" for="id_token">RefreshToken:</label>
+        <input class="input-data" id="id_token" type="password" name="token" value="${token}">
+      </div>
 
-    <div class="input-block">
-      <label for="id_device_id">DeviceHive DeviceID:</label>
-      <input class="input-text" id="id_device_id" type="text" name="device_id" value="${device_id}">
-    </div>
+      <div class="group-box">
+        <label class="pin-label" for="id_device_id">DeviceID:</label>
+        <input class="input-data" id="id_device_id" type="text" name="device_id" value="${device_id}">
+      </div>
 
-    <button>Save</button>
-  </form>
+      <div class="group-box">
+        <button class="btn_event btn_event_green" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 </body>
 </html>
 <script src="/static/dh_config/main.js"></script>

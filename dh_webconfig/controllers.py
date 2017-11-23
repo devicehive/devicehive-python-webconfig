@@ -23,8 +23,9 @@ __all__ = ['Config', 'DHStatusUpdate']
 class Config(Controller):
 
     def get(self, handler, *args, **kwargs):
-        data = handler.server.dh_cfg.data
-        response = self.render_template('index.html', **data)
+        cfg_data = handler.server.dh_cfg.data
+        status = handler.server.dh_status.status
+        response = self.render_template('index.html', status=status, **cfg_data)
 
         handler.send_response(http_client.OK)
         handler.send_header('Content-type', 'text/html')
