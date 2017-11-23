@@ -29,6 +29,10 @@ class WebServer(ThreadingMixIn, HTTPServer):
         return self._static_dirs
 
     @property
+    def server(self):
+        return self._server
+
+    @property
     def dh_cfg(self):
         return self._server.dh_cfg
 

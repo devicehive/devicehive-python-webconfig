@@ -5,7 +5,7 @@ This is proxy package for [devicehive-python](https://github.com/devicehive/devi
 
 ## Installation
 ```bash
-pip install -e git://github.com/devicehive/devicehive-python-webconfig.git#egg=dh_webconfig
+pip install -e git://github.com/devicehive/devicehive-python-webconfig.git#egg=devicehive_webconfig
 ```
 
 ## Usage

@@ -40,7 +40,7 @@ def get_requires():
         return f.readlines()
 
 
-setup(name='devicehive-webconfig',
+setup(name='devicehive_webconfig',
       version=get_version('dh_webconfig'),
       author='DataArt (http://dataart.com)',
       author_email='info@devicehive.com',
