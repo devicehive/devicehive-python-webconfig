@@ -1,5 +1,5 @@
 import os
-from dh_webconfig import Server, Handler
+from devicehive_webconfig import Server, Handler
 
 from controllers import ExampleController
 

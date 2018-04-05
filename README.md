@@ -1,11 +1,11 @@
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 # Devicehive python web configurator
 This is proxy package for [devicehive-python](https://github.com/devicehive/devicehive-python) that provides simple web interface to configure connection.
 
 ## Installation
 ```bash
-pip install -e git://github.com/devicehive/devicehive-python-webconfig.git#egg=devicehive_webconfig
+pip install devicehive-webconfig
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ Exapmle:
 import time
 import json
 
-from dh_webconfig import Server, Handler
+from devicehive_webconfig import Server, Handler
 
 
 class ExampleHandler(Handler):

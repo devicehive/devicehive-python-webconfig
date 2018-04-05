@@ -1,5 +1,5 @@
 from six.moves import http_client
-from dh_webconfig.base import Controller
+from devicehive_webconfig.base import Controller
 
 
 class ExampleController(Controller):
