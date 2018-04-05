@@ -26,7 +26,7 @@ class _ConfigData(dict):
     """
     Dict with predefined keys.
     """
-    _keys = ('url', 'token', 'device_id')
+    _keys = ('url', 'a_token', 'r_token' 'device_id')
 
     def __init__(self, *args, **kwargs):
         for key in _ConfigData._keys:

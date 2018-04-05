@@ -136,8 +136,10 @@ class Server(object):
         try:
             self.dh_status.set_connecting()
             url = self.dh_cfg.data['url']
-            refresh_token = self.dh_cfg.data['token']
-            self.deviceHive.connect(url, refresh_token=refresh_token)
+            access_token = self.dh_cfg.data['a_token']
+            refresh_token = self.dh_cfg.data['r_token']
+            self.deviceHive.connect(url, access_token=access_token,
+                                    refresh_token=refresh_token)
         except TransportError as e:
             logger.exception(e)
             error = str(e)

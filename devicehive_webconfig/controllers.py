@@ -36,7 +36,8 @@ class Config(Controller):
         data = handler.post_vars
         new_data = {
             'url': data.get("url")[0],
-            'token': data.get("token")[0],
+            'a_token': data.get("a_token")[0],
+            'r_token': data.get("r_token")[0],
             'device_id': data.get("device_id")[0],
         }
         handler.server.dh_cfg.save(new_data)
