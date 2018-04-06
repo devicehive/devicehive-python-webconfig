@@ -43,10 +43,12 @@ class Config(object):
     _data = None
     _update_callback = None
 
-    def __init__(self, update_callback=None, config_filename='dh_config.json'):
+    def __init__(self, update_callback=None, config_filename='dh_config.json',
+                 initial=None):
         self._update_callback = update_callback
         self._data_path = os.path.join(os.getcwd(), config_filename)
-        self._data = _ConfigData()
+        initial = initial or {}
+        self._data = _ConfigData(initial)
 
     def _on_update(self):
         self._update_callback()

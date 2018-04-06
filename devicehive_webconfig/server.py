@@ -50,7 +50,7 @@ class Server(object):
 
     def __init__(self, dh_handler_class, routes=(), static_dirs=(),
                  is_blocking=True, server_address=('0.0.0.0', 8000),
-                 *dh_handler_args, **dh_handler_kwargs):
+                 initial_config=None, *dh_handler_args, **dh_handler_kwargs):
         """
         Initialize web server and devicehive client.
         :param dh_handler_class: Handler class for devicehive client.
@@ -58,6 +58,7 @@ class Server(object):
         :param static_dirs: Additional static dirs for web server.
         :param is_blocking: If True blocking loop wil be started on startup.
         :param server_address: Server address to serve web ui.
+        :param initial_config: Dict with Devicehive config.
         :param dh_handler_args: Additional args to be passed to handler.
         :param dh_handler_kwargs: Additional kwargs to be passed to handler.
         """
@@ -66,7 +67,8 @@ class Server(object):
         self._dh_handler_kwargs = dh_handler_kwargs
         self._is_blocking = is_blocking
 
-        self.dh_cfg = Config(update_callback=self._restart_dh)
+        self.dh_cfg = Config(update_callback=self._restart_dh,
+                             initial=initial_config)
         self.dh_status = Status()
         self.webServer = WebServer(server=self, routes=routes,
                                    static_dirs=static_dirs,
