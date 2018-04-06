@@ -67,9 +67,9 @@ class Server(object):
         self._dh_handler_kwargs = dh_handler_kwargs
         self._is_blocking = is_blocking
 
+        self.dh_status = Status()
         self.dh_cfg = Config(update_callback=self._restart_dh,
                              initial=initial_config)
-        self.dh_status = Status()
         self.webServer = WebServer(server=self, routes=routes,
                                    static_dirs=static_dirs,
                                    server_address=server_address,
