@@ -48,7 +48,9 @@ class Config(object):
         self._update_callback = update_callback
         self._data_path = os.path.join(os.getcwd(), config_filename)
         initial = initial or {}
-        self._data = _ConfigData(initial)
+        self._data = _ConfigData()
+        if initial:
+            self.save(initial)
 
     def _on_update(self):
         self._update_callback()
