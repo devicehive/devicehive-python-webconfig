@@ -66,10 +66,10 @@ class Server(object):
         self._dh_handler_args = dh_handler_args
         self._dh_handler_kwargs = dh_handler_kwargs
         self._is_blocking = is_blocking
+        self._initial_config = initial_config
 
         self.dh_status = Status()
-        self.dh_cfg = Config(update_callback=self._restart_dh,
-                             initial=initial_config)
+        self.dh_cfg = Config(update_callback=self._restart_dh)
         self.webServer = WebServer(server=self, routes=routes,
                                    static_dirs=static_dirs,
                                    server_address=server_address,
@@ -86,7 +86,12 @@ class Server(object):
     def start(self):
         self.__is_running = True
         self._start_web()
-        self.dh_cfg.load()  # this will start DH thread automatically
+
+        # this will start DH thread automatically
+        if self._initial_config:
+            self.dh_cfg.save(self._initial_config)
+        else:
+            self.dh_cfg.load()
 
         self._on_startup()
 
