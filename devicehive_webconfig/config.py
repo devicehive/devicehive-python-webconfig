@@ -1,4 +1,4 @@
-# Copyright (C) 2017 DataArt
+# Copyright (C) 2018 DataArt
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ class _ConfigData(dict):
     """
     Dict with predefined keys.
     """
-    _keys = ('url', 'token', 'device_id')
+    _keys = ('url', 'a_token', 'r_token' 'device_id')
 
     def __init__(self, *args, **kwargs):
         for key in _ConfigData._keys:

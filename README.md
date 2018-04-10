@@ -1,11 +1,11 @@
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 # Devicehive python web configurator
 This is proxy package for [devicehive-python](https://github.com/devicehive/devicehive-python) that provides simple web interface to configure connection.
 
 ## Installation
 ```bash
-pip install -e git://github.com/devicehive/devicehive-python-webconfig.git#egg=devicehive_webconfig
+pip install devicehive-webconfig
 ```
 
 ## Usage
@@ -14,13 +14,13 @@ Web interface based on python HttpServer and implements Devicehive connection in
 It takes _Handler_ class as argument like original _Devicehive_ class.\
 Only difference that extended _Handler_ class from this repository must used.\
 Server could be runned in non-blocking mode, so main thread is free to use.\
-Exapmle:
+Example:
 
 ```python
 import time
 import json
 
-from dh_webconfig import Server, Handler
+from devicehive_webconfig import Server, Handler
 
 
 class ExampleHandler(Handler):
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         server.deviceHive.handler.send('notification #{}'.format(i))
 
 ```
-Additional _Handler_ arguments can be passed as _*args_ and _**kwargs_
+Additional _Handler_ arguments can be passed as _args_ and _kwargs_
 
 ### Advanced
 This library was designed to be easily extended.

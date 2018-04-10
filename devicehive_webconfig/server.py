@@ -1,4 +1,4 @@
-# Copyright (C) 2017 DataArt
+# Copyright (C) 2018 DataArt
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ class Server(object):
 
     def __init__(self, dh_handler_class, routes=(), static_dirs=(),
                  is_blocking=True, server_address=('0.0.0.0', 8000),
-                 *dh_handler_args, **dh_handler_kwargs):
+                 initial_config=None, *dh_handler_args, **dh_handler_kwargs):
         """
         Initialize web server and devicehive client.
         :param dh_handler_class: Handler class for devicehive client.
@@ -58,6 +58,7 @@ class Server(object):
         :param static_dirs: Additional static dirs for web server.
         :param is_blocking: If True blocking loop wil be started on startup.
         :param server_address: Server address to serve web ui.
+        :param initial_config: Dict with Devicehive config.
         :param dh_handler_args: Additional args to be passed to handler.
         :param dh_handler_kwargs: Additional kwargs to be passed to handler.
         """
@@ -65,9 +66,10 @@ class Server(object):
         self._dh_handler_args = dh_handler_args
         self._dh_handler_kwargs = dh_handler_kwargs
         self._is_blocking = is_blocking
+        self._initial_config = initial_config
 
-        self.dh_cfg = Config(update_callback=self._restart_dh)
         self.dh_status = Status()
+        self.dh_cfg = Config(update_callback=self._restart_dh)
         self.webServer = WebServer(server=self, routes=routes,
                                    static_dirs=static_dirs,
                                    server_address=server_address,
@@ -84,7 +86,12 @@ class Server(object):
     def start(self):
         self.__is_running = True
         self._start_web()
-        self.dh_cfg.load()  # this will start DH thread automatically
+
+        # this will start DH thread automatically
+        if self._initial_config:
+            self.dh_cfg.save(self._initial_config)
+        else:
+            self.dh_cfg.load()
 
         self._on_startup()
 
@@ -136,8 +143,10 @@ class Server(object):
         try:
             self.dh_status.set_connecting()
             url = self.dh_cfg.data['url']
-            refresh_token = self.dh_cfg.data['token']
-            self.deviceHive.connect(url, refresh_token=refresh_token)
+            access_token = self.dh_cfg.data['a_token']
+            refresh_token = self.dh_cfg.data['r_token']
+            self.deviceHive.connect(url, access_token=access_token,
+                                    refresh_token=refresh_token)
         except TransportError as e:
             logger.exception(e)
             error = str(e)
