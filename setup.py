@@ -36,11 +36,6 @@ def get_package_data(package):
     return {package: filepaths}
 
 
-def get_requires():
-    with open('requirements.txt') as f:
-        return f.readlines()
-
-
 setup(name='devicehive_webconfig',
       version=get_version('devicehive_webconfig'),
       author='DataArt (http://dataart.com)',
@@ -52,7 +47,7 @@ setup(name='devicehive_webconfig',
       keywords='iot cloud m2m gateway embedded devicehive configurator web ui',
       packages=get_packages('devicehive_webconfig'),
       package_data=get_package_data('devicehive_webconfig'),
-      install_requires=get_requires(),
+      install_requires=['devicehive>=2.1.3', 'six>=1.11.0'],
       python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
       classifiers=[
           'Development Status :: 4 - Beta',
