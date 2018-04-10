@@ -14,7 +14,7 @@ Web interface based on python HttpServer and implements Devicehive connection in
 It takes _Handler_ class as argument like original _Devicehive_ class.\
 Only difference that extended _Handler_ class from this repository must used.\
 Server could be runned in non-blocking mode, so main thread is free to use.\
-Exapmle:
+Example:
 
 ```python
 import time
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         server.deviceHive.handler.send('notification #{}'.format(i))
 
 ```
-Additional _Handler_ arguments can be passed as _*args_ and _**kwargs_
+Additional _Handler_ arguments can be passed as _args_ and _kwargs_
 
 ### Advanced
 This library was designed to be easily extended.
