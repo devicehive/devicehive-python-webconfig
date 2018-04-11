@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import time
+import signal
 import logging
 import threading
 from devicehive import DeviceHive, TransportError
@@ -62,6 +63,8 @@ class Server(object):
         :param dh_handler_args: Additional args to be passed to handler.
         :param dh_handler_kwargs: Additional kwargs to be passed to handler.
         """
+        signal.signal(signal.SIGTERM, self._sys_handler)
+
         self._dh_handler_class = dh_handler_class
         self._dh_handler_args = dh_handler_args
         self._dh_handler_kwargs = dh_handler_kwargs
@@ -78,6 +81,10 @@ class Server(object):
         self._web_thread = threading.Thread(
             target=self._web_loop, name='web')
         self._web_thread.setDaemon(True)
+
+    def _sys_handler(self, signum, frame):
+        logging.info('Warm shutdown request by system call.')
+        self.stop()
 
     @property
     def is_running(self):
