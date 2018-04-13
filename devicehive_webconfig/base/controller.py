@@ -51,8 +51,18 @@ class Controller(BaseController):
         with open(os.path.join(self.base_dir, self.template_dir, name)) as f:
             return Template(f.read())
 
+    def get_nav_links(self):
+        links = []
+        for label, url in self._server.nav_links:
+            links.append('<a href="{}">{}</a>'.format(url, label))
+        return ''.join(links)
+
     def render_template(self, name, **kwargs):
-        return self.get_template(name).safe_substitute(**kwargs)
+        context = {
+            'nav_links': self.get_nav_links()
+        }
+        context.update(kwargs)
+        return self.get_template(name).safe_substitute(**context)
 
 
 class StaticController(BaseController):

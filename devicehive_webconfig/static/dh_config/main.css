@@ -21,6 +21,14 @@ body {
 	font-size: 100%;
 }
 
+a {
+	color: #467487;
+}
+
+a:hover {
+	color: #4C9A6C;
+}
+
 .header {
 	background: #fff;
 	border-bottom: 3px solid #467487;
@@ -31,13 +39,24 @@ body {
 	margin: 0 auto;
 }
 
-.header .devecihive-logo-text {
+.header .devicihive-logo-text {
 	background: url('/static/dh_config/logo.png') no-repeat;
 	height: 100%;
 	background-size: contain;
 	display: inline-block;
 	width: 210px;
 	vertical-align: middle;
+}
+
+.header .nav {
+    display: inline-block;
+    float: right;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+.nav *:not(:last-child) {
+    margin-right: 10px;
 }
 
 .input-data {

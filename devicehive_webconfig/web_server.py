@@ -14,10 +14,12 @@ class WebServer(ThreadingMixIn, HTTPServer):
     _routes = default_routes
     _static_dirs = [os.path.join(os.path.dirname(__file__), 'static')]
 
-    def __init__(self, server, routes=(), static_dirs=(), *args, **kwargs):
+    def __init__(self, server, routes=(), static_dirs=(), nav_links=(),
+                 *args, **kwargs):
         self._server = server
         self._routes.extend(routes)
         self._static_dirs.extend(static_dirs)
+        self._nav_links = nav_links
         HTTPServer.__init__(self, *args, **kwargs)
 
     @property
@@ -27,6 +29,10 @@ class WebServer(ThreadingMixIn, HTTPServer):
     @property
     def static_dirs(self):
         return self._static_dirs
+
+    @property
+    def nav_links(self):
+        return self._nav_links
 
     @property
     def server(self):
